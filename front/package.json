@@ -9,10 +9,7 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,vue}\"",
-    "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,json,vue}\"",
-    "lint": "eslint \"**/*.{ts,tsx,js,jsx,vue}\" --fix",
-    "lint:check": "eslint \"**/*.{ts,tsx,js,jsx,vue}\"",
-    "prepare": "bun run format && bun run format:check && bun run lint && bun run lint:check"
+    "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,json,vue}\""
   },
   "dependencies": {
     "@nuxt/eslint": "1.2.0",

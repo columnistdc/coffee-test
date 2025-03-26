@@ -3,11 +3,16 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "docker-compose up -d",
+    "start": "docker-compose up -d && node wait-for-mongo.js",
     "stop": "docker-compose down",
-    "dev": "docker-compose up"
+    "dev": "docker-compose up & sleep 5 && node wait-for-mongo.js",
+    "migrate": "node migrate.js migrate",
+    "migrate:status": "node migrate.js status",
+    "migrate:rollback": "node migrate.js rollback",
+    "check": "node check_migrations.js",
+    "clean": "node clean.js"
   },
   "dependencies": {
-    "mongodb": "^6.3.0"
+    "mongodb": "6.3.0"
   }
-} 
+}

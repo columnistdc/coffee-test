@@ -3,10 +3,9 @@
 
 echo "Running pre-commit fixes..."
 
-# Fix frontend
-echo "Fixing frontend..."
-cd front && bun run format && bun run lint
+# Run lint-staged for all staged files
+bun lint-staged
 
-# Fix backend
-echo "Fixing backend..."
-cd ../back && bun run format && bun run lint 
+# Run format and lint for all packages
+bun run format
+bun run lint 

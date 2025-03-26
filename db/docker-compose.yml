@@ -2,13 +2,17 @@ version: '3.8'
 services:
   mongodb:
     image: mongo:latest
+    container_name: coffee_test_mongodb
     ports:
-      - "27017:27017"
+      - '27017:27017'
     volumes:
       - mongodb_data:/data/db
+      - ./init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
     environment:
       - MONGO_INITDB_ROOT_USERNAME=admin
-      - MONGO_INITDB_ROOT_PASSWORD=password
+      - MONGO_INITDB_ROOT_PASSWORD=admin123
+    command: ['mongod', '--bind_ip_all', '--logpath', '/dev/stdout', '--logappend', '--quiet']
 
 volumes:
-  mongodb_data: 
+  mongodb_data:
+    # Persistent storage for MongoDB data
