@@ -1,84 +1,99 @@
-# Turborepo starter
+# Coffee Test Project
 
-This Turborepo starter is maintained by the Turborepo core team.
+## Технологии
 
-## Using this example
+### Frontend
 
-Run the following command:
+- **Nuxt.js** - Vue.js фреймворк для создания веб-приложений
+  - Выбран для удобной разработки, встроенной оптимизации и отличной производительности
+  - TypeScript для типизации
+  - Vue.js как основной фреймворк
+  - Серверный рендеринг и оптимизация из коробки
 
-```sh
-npx create-turbo@latest
-```
+### Backend
 
-## What's inside?
+- **Nest.js** - Node.js фреймворк для создания масштабируемых серверных приложений
+  - Выбран за архитектуру, похожую на Angular, что упрощает разработку
+  - Встроенная поддержка TypeScript
+  - Модульная структура и декораторы
+  - Отличная документация и большое сообщество
 
-This Turborepo includes the following packages/apps:
+### Database
 
-### Apps and Packages
+- **MongoDB** - NoSQL база данных
+  - Выбрана за гибкость схемы данных
+  - Хорошая производительность для операций чтения/записи
+  - Удобная интеграция с Node.js
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
+### Инструменты разработки
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+- **Bun** - JavaScript runtime и пакетный менеджер
+  - Выбран за высокую производительность
+  - Встроенная поддержка TypeScript
+  - Быстрая установка зависимостей
+- **Turbo** - Система сборки для монорепозиториев
+  - Управление зависимостями между пакетами
+  - Кэширование сборок
+  - Параллельное выполнение задач
 
-### Utilities
-
-This Turborepo has some additional tools already setup for you:
-
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
-
-### Build
-
-To build all apps and packages, run the following command:
-
-```
-cd my-turborepo
-pnpm build
-```
-
-### Develop
-
-To develop all apps and packages, run the following command:
+## Структура проекта
 
 ```
-cd my-turborepo
-pnpm dev
+coffee-test/
+├── front/           # Next.js фронтенд приложение
+├── back/            # Nest.js бэкенд приложение
+├── db/              # MongoDB конфигурация и скрипты
+└── package.json     # Корневой package.json с workspaces
 ```
 
-### Remote Caching
+## Команды
 
-> [!TIP]
-> Vercel Remote Cache is free for all plans. Get started today at [vercel.com](https://vercel.com/signup?/signup?utm_source=remote-cache-sdk&utm_campaign=free_remote_cache).
+### Корневые команды
 
-Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
+- `bun install` - установка зависимостей для всех пакетов
+- `bun run dev` - запуск всех сервисов в режиме разработки
+- `bun run dev:front` - запуск только фронтенда
+- `bun run dev:back` - запуск только бэкенда
+- `bun run build` - сборка всех пакетов
+- `bun run lint` - проверка кода линтером
+- `bun run format` - форматирование кода
 
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup?utm_source=turborepo-examples), then enter the following commands:
+### Команды бэкенда
 
+- `bun run dev` - запуск в режиме разработки
+- `bun run build` - сборка проекта
+- `bun run start:prod` - запуск в production режиме
+- `bun run test` - запуск тестов
+
+### Команды фронтенда
+
+- `bun run dev` - запуск в режиме разработки
+- `bun run build` - сборка проекта
+- `bun run start` - запуск production сборки
+
+## Запуск проекта локально
+
+1. Установите зависимости:
+
+```bash
+bun install
 ```
-cd my-turborepo
-npx turbo login
+
+2. Запустите все сервисы:
+
+```bash
+bun run dev
 ```
 
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
+## Ожидаемый результат
 
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
+После запуска проекта вы получите:
 
-```
-npx turbo link
-```
+- Фронтенд приложение на http://localhost:3000
+- Бэкенд API на http://localhost:3001
+- MongoDB на стандартном порту 27017
 
-## Useful Links
+Тестовый API эндпоинт доступен по адресу http://localhost:3001/api/test
 
-Learn more about the power of Turborepo:
-
-- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
-- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
-- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
-- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
-- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
-- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
+- GET запрос вернет приветственное сообщение
+- POST запрос вернет полученные данные

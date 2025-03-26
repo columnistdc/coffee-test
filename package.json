@@ -1,24 +1,30 @@
 {
   "name": "coffee-test",
   "private": true,
+  "version": "1.0.0",
+  "workspaces": [
+    "front",
+    "back",
+    "db"
+  ],
   "scripts": {
-    "build": "turbo run build",
     "dev": "turbo run dev",
+    "dev:front": "turbo run dev --filter=front",
+    "dev:back": "turbo run dev --filter=back",
+    "build": "turbo run build",
+    "start": "turbo run start",
     "lint": "turbo run lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "check-types": "turbo run check-types"
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,vue}\"",
+    "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,json,vue}\"",
+    "prepare": "husky install"
   },
   "devDependencies": {
-    "prettier": "^3.5.3",
-    "turbo": "^2.4.4",
-    "typescript": "5.8.2"
+    "turbo": "1.12.4",
+    "prettier": "3.2.5",
+    "husky": "9.0.11"
   },
   "engines": {
     "node": ">=18"
   },
-  "packageManager": "bun@1.1.42",
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ]
+  "packageManager": "bun@1.1.42"
 }
