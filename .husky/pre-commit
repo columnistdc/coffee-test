@@ -1,0 +1,12 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo "Running pre-commit fixes..."
+
+# Fix frontend
+echo "Fixing frontend..."
+cd front && bun run format && bun run lint
+
+# Fix backend
+echo "Fixing backend..."
+cd ../back && bun run format && bun run lint 

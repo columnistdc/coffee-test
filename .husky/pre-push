@@ -1,4 +1,12 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-bun run format:check 
+echo "Running pre-push checks..."
+
+# Check frontend
+echo "Checking frontend..."
+cd front && bun run format:check && bun run lint:check
+
+# Check backend
+echo "Checking backend..."
+cd ../back && bun run format:check && bun run lint:check 
